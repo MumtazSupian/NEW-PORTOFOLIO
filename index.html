@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animasi muncul halus */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0f0f10;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            width: 100%;
+            padding: 10px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: transparent;
+            /* hilangkan background */
+            backdrop-filter: none;
+            /* hilangkan blur */
+        }
+
+        .header-logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+
+        .header-logo span {
+            color: #ffcc29;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcc29;
+        }
+
+        /* HERO */
+        .hero {
+            padding-top: 130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 70px;
+            padding-bottom: 120px;
+        }
+
+        .hero img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffcc29;
+            box-shadow: 0 0 30px rgba(255, 204, 41, 0.4);
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            line-height: 1.3;
+        }
+
+        .hero-text span {
+            color: #ffcc29;
+        }
+
+        .btn {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 12px 28px;
+            background: #ffcc29;
+            color: #000;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* SECTION GENERAL */
+        section {
+            padding: 90px 60px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        /* ABOUT */
+        .about p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        /* ACHIEVEMENT */
+        .achievement-cards,
+        .skill-cards,
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: #1a1a1c;
+            padding: 20px;
+            border-radius: 16px;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        /* PROJECTS */
+        .project-box {
+            background: #1a1a1c;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            transition: 0.3s;
+        }
+
+        .project-box:hover {
+            transform: translateY(-6px);
+        }
+
+        .project-box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .project-box h2 {
+            margin: 15px 0;
+        }
+
+        .project-box a {
+            text-decoration: none;
+            color: #ffcc29;
+            font-weight: 600;
+        }
+
+        /* CONTACT */
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #ffcc29;
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 900px;
+            margin: 10px auto;
+            background: #ffffff;
+            padding: 14px 25px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-left {
+            background: #ff5b2e;
+            padding: 6px 18px;
+            color: white;
+            font-weight: 700;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: #444;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .nav-right .resume-btn {
+            background: #1a1a1a;
+            color: white;
+            padding: 8px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 2px solid transparent;
+            background: linear-gradient(#0f0f10, #0f0f10) padding-box,
+                linear-gradient(90deg, #ff5b2e, #ff77ff) border-box;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-weight: 600;
+            color: #fff;
+            box-shadow: 0 0 12px rgba(255, 91, 46, 0.3);
+            width: fit-content;
+            transition: 0.3s;
+        }
+
+        .achievement-box i {
+            color: #ff5b2e;
+            font-size: 18px;
+        }
+
+        .achievement-box a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .achievement-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(255, 91, 46, 0.6);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f6f2;
+            /* Ubah dari #0f0f10 */
+            color: #000;
+            /* warna teks default gelap */
+            overflow-x: hidden;
+        }
+
+        /* SECTION GENERAL */
+        section {
+            padding: 90px 60px;
+            text-align: center;
+            background: #f8f6f2;
+            /* semua section sama */
+            color: #000;
+        }
+
+        /* ABOUT BOX */
+        .about-box {
+            background: #ffffff;
+            color: #000;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 950px;
+            margin: auto;
+        }
+
+        /* ABOUT TEXT */
+        .about-box p {
+            color: #333;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #f8f6f2;
+        }
+
+        .projects {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .projects h1 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            width: 100%;
+            margin: auto;
+            max-width: 950px;
+            /* Tambahan biar maksimal 3 kolom */
+        }
+
+        @media (min-width: 950px) {
+            .project-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .image-box {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s ease;
+        }
+
+        /* Hover blur */
+        .project-card:hover img {
+            filter: blur(4px);
+            transform: scale(1.1);
+        }
+
+        /* Overlay gradient */
+        .overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.75));
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+
+        .project-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h2 {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .overlay a {
+            padding: 8px 18px;
+            background: #ffffff;
+            color: #111;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .overlay a:hover {
+            background: #ddd;
+        }
+
+        .contact {
+            padding: 100px 20px;
+            background: #f8f6f2;
+            color: #111;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+
+        .contact h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        .contact-subtitle {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 50px;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        /* FORM */
+        .contact-form {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 18px;
+            width: 550px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.3s ease;
+            text-align: left;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-form h2 {
+            margin-bottom: 10px;
+            color: #ff5b2e;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background: #fafafa;
+            color: #333;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #ff5b2e;
+            background: #fff;
+        }
+
+        .contact-form button {
+            background: linear-gradient(90deg, #ff5b2e, #ffcc29);
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .contact-form button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* SOCIAL SECTION */
+        .social-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+
+        .social-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #ff5b2e;
+            margin-bottom: 20px;
+        }
+
+        /* SOCIAL LINKS */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #111;
+            font-size: 1.05rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a i {
+            font-size: 1.6rem;
+            color: #ff5b2e;
+            transition: 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff5b2e;
+            transform: translateX(6px);
+        }
+
+        .social-links a:hover i {
+            transform: scale(1.2);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .contact-wrapper {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+
+            .social-links {
+                margin-top: 40px;
+            }
+        }
+
+        .image-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+
+        .image-popup.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .image-popup img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-popup:hover {
+            color: #ffcc29;
+            transform: scale(1.2);
+        }
+
+        /* ==== HOVER EFFECT UNTUK SKILL & TOOLS ==== */
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item img {
+            width: 45px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .skill-item p {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Hover effect untuk skill dan tools */
+        .skill-item:hover {
+            transform: translateY(-6px);
+        }
+
+        .skill-item:hover img {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px rgba(255, 91, 46, 0.4));
+        }
+
+        .skill-item:hover p {
+            color: #ff5b2e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-left">Portofolio</div>
+            <div class="nav-center">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skill">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="nav-right"><button class="resume-btn">Download CV</button></div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero" style="text-align:center; padding:120px 20px; background:#f8f6f2;">
+        <div style="
+        max-width:750px; 
+        margin:auto; 
+        display:flex; 
+        flex-direction:column; 
+        align-items:center;
+    ">
+            <img src="image/port2.jpg" alt="Profile Picture"
+                style="width:140px; height:140px; border-radius:20px; object-fit:cover; box-shadow:0 6px 20px rgba(0,0,0,0.1); margin-bottom:25px;">
+
+            <div style="
+            margin-bottom:15px;
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            background:#fff;
+            padding:6px 16px;
+            border-radius:25px;
+            box-shadow:0 4px 14px rgba(0,0,0,0.08);
+        ">
+                <span style="
+                background:#ffe8d2;
+                padding:6px 14px;
+                border-radius:20px;
+                font-size:14px;
+                color:#d86528;
+                font-weight:600;
+            ">Hey!</span>
+
+                <span style="
+                font-size:14px;
+                color:#000;
+                font-weight:600;
+            ">I'm Utaa</span>
+            </div>
+
+            <h1 style="font-size:48px; font-weight:800; line-height:1.2; color:#111; margin-bottom:20px;"> I build <span
+                    style="font-weight:400;">mobile apps</span> that<br> actually <span
+                    style="font-weight:800;">works!</span> </h1>
+            <p style="font-size:16px; color:#555; max-width:500px; margin:0 auto 30px;">Crafting smooth, responsive, and
+                user-friendly mobile experiences with style and reliability</p>
+            <a href="#contact"
+                style="display:inline-block; padding:12px 28px; background:#111; color:white; border-radius:12px; font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,0.2);">Contact
+                me</a>
+
+        </div>
+    </section>
+
+    <section id="about" class="about fade-up style=" padding-top:120px; text-align:center;">
+        <h1 style="margin-bottom:100px; text-align:center;">About Me</h1>
+        <div style="
+        display:flex; 
+        align-items:center; 
+        justify-content:center; 
+        gap:40px; 
+        max-width:900px; 
+        margin:0 auto;
+        text-align:left;">
+            <img src="image/port2.jpg" alt="About Photo" style="width:280px; height:280px; border-radius:20px; object-fit:cover;
+            box-shadow:0 6px 20px rgba(0,0,0,0.15);">
+            <div style="max-width:500px;">
+                <h2 style="font-size:28px; margin-bottom:10px; color:#000;">
+                    Hi, I'm Muhammad Mumtaz Supian 👋
+                </h2>
+                <p style="font-size:15px; line-height:1.7; margin-bottom:25px;">
+                    I'm a front-end developer who builds clean, modern, and responsive interfaces.
+                    I work with <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, and <b>Laravel</b> to create smooth user
+                    experiences.
+                    I'm also learning <b>Flutter (Dart)</b> to develop cross-platform mobile apps.
+                </p>
+                <a href="#contact"
+                    style="display:inline-block; padding:12px 28px; background:#111; color:white; border-radius:12px; font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,0.2);">Contact
+                    me ></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skill" class="skill fade-up" style="padding:150px 0; text-align:center;">
+        <h1 style="font-size:32px; margin-bottom:50px;">My Skill</h1>
+        <div style="
+display:grid; 
+grid-template-columns:repeat(auto-fit, minmax(120px, 1fr));
+gap:25px;
+max-width:900px;
+margin:0 auto;">
+            <div class="skill-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML">
+                <p>HTML</p>
+            </div>
+
+            <div class="skill-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS">
+                <p>CSS</p>
+            </div>
+
+            <div class="skill-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript">
+                <p>JavaScript</p>
+            </div>
+
+            <div class="skill-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/919/919830.png" alt="PHP">
+                <p>PHP</p>
+            </div>
+
+            <div class="skill-item">
+                <img src="https://laravel.com/img/logomark.min.svg" alt="Laravel">
+                <p>Laravel</p>
+            </div>
+
+            <div class="skill-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                    alt="Flutter">
+                <p>Flutter</p>
+            </div>
+        </div>
+
+        <h2 style="margin-top:60px; margin-bottom:25px; font-size:26px;">Tools</h2>
+
+        <div style="
+    display:grid; 
+    grid-template-columns:repeat(auto-fit, minmax(100px, 1fr));
+    max-width:450px;
+    margin:0 auto;
+    row-gap:28px;">
+
+            <!-- VS Code -->
+            <div class="skill-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
+                <p>VS Code</p>
+            </div>
+
+            <!-- GitHub (bulat) -->
+            <div class="skill-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"
+                    style="border-radius:50%; background:#fff; padding:4px;">
+                <p>GitHub</p>
+            </div>
+
+            <!-- Figma -->
+            <div class="skill-item">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                <p>Figma</p>
+            </div>
+
+            <!-- Notion -->
+            <div class="skill-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" alt="Notion">
+                <p>Notion</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projects" class="projects fade-up">
+        <h1>Projects</h1>
+        <div class="project-container">
+
+            <div class="project-card">
+                <div class="image-box">
+                    <img src="image/tiket konser.png">
+                    <div class="overlay">
+                        <h2>Tiket Konser</h2>
+                        <a href="#">Click to View</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="image-box">
+                    <img src="image/perbandingan.png">
+                    <div class="overlay">
+                        <h2>Projek ATS Perbandingan</h2>
+                        <a href="#">Click to View</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="image-box">
+                    <img src="image/rental motor.png">
+                    <div class="overlay">
+                        <h2>Rental Motor</h2>
+                        <a href="#">Click to View</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="image-box">
+                    <img src="image/pengaduan.png">
+                    <div class="overlay">
+                        <h2>Sistem Pengaduan Masyarakat</h2>
+                        <a href="#">Click to View</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="image-box">
+                    <img src="image/webshop.png">
+                    <div class="overlay">
+                        <h2>Webshop</h2>
+                        <a href="#">Click to View</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="image-box">
+                    <img src="image/datasiswa.png">
+                    <div class="overlay">
+                        <h2>Data Siswa</h2>
+                        <a href="#">Click to View</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="contact" class="contact fade-up">
+        <h1>Contact Me</h1>
+        <p class="contact-subtitle">Contact me or follow my social media</p>
+        <div class="contact-wrapper">
+            <!-- Form Kirim Pesan -->
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <p>Name : </p>
+                <input type="text" id="name" placeholder="Your Name" />
+                <p>Email : </p>
+                <input type="email" id="email" placeholder="Your Email" />
+                <p>Message : </p>
+                <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+                <button id="sendBtn">Send Message</button>
+            </div>
+
+            <!-- Social Media -->
+            <div class="social-section">
+                <h2 class="social-title">Follow my social media</h2>
+                <div class="social-links">
+                    <a href="#" target="_blank">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                    <a href="mailto:mumtazztaaa@gmail.com">
+                        <i class="fa-solid fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <footer style="text-align:center; padding:20px; color:black; font-family:'Poppins',sans-serif;">
+        <p style="display:flex; justify-content:center; align-items:center; gap:8px; font-size:15px;">
+            © 2025 | Made with
+            <i class="fa-regular fa-heart" style="color:#ff5b2e; font-size:16px;"></i>
+            and
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                stroke="#ffcc29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+                <path d="M3 8h14v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+                <path d="M6 2v2"></path>
+                <path d="M10 2v2"></path>
+                <path d="M14 2v2"></path>
+            </svg>
+            by Mumtaz
+        </p>
+    </footer>
+
+    <div class="image-popup" id="imagePopup">
+        <span class="close-popup" id="closePopup">&times;</span>
+        <img id="popupImg" src="" alt="Project Preview">
+    </div>
+
+    <script>
+        document.getElementById('sendBtn').addEventListener('click', function () {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            alert(`Thank you, ${name}! Your message has been sent.`);
+
+            // Reset form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        });
+
+        // Efek animasi fade-up saat section muncul di layar
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('show');
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // === POPUP GAMBAR PROJECT ===
+        const popup = document.getElementById("imagePopup");
+        const popupImg = document.getElementById("popupImg");
+        const closePopup = document.getElementById("closePopup");
+
+        // Tangkap semua tombol "Click to View"
+        document.querySelectorAll(".project-card .overlay a").forEach(btn => {
+            btn.addEventListener("click", e => {
+                e.preventDefault(); // cegah buka link
+                const imgSrc = btn.closest(".project-card").querySelector("img").src;
+                popupImg.src = imgSrc;
+                popup.classList.add("active");
+            });
+        });
+
+        // Tutup popup kalau diklik tombol X
+        closePopup.addEventListener("click", () => {
+            popup.classList.remove("active");
+        });
+
+        // Tutup popup kalau klik area gelap di luar gambar
+        popup.addEventListener("click", e => {
+            if (e.target === popup) popup.classList.remove("active");
+        });
+
+    </script>
+
+</body>
+
+</html>
