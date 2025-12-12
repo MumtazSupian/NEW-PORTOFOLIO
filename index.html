@@ -83,7 +83,8 @@
 
         /* HERO */
         .hero {
-            padding-top: 130px;
+            padding-top: 180px;
+            /* dari 160px → 180px */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -241,8 +242,10 @@
             padding: 14px 25px;
             border-radius: 50px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            /* penting biar bisa center nav-center */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
@@ -255,7 +258,11 @@
             font-size: 17px;
         }
 
+        /* Menu tengah */
         .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             gap: 30px;
         }
@@ -265,7 +272,13 @@
             color: #444;
             font-size: 16px;
             font-weight: 500;
+            transition: 0.3s;
         }
+
+        .nav-center a:hover {
+            color: #ff5b2e;
+        }
+
 
         .nav-right .resume-btn {
             background: #1a1a1a;
@@ -820,14 +833,15 @@
             }
         }
 
-        /* === NAVBAR MOBILE DROPDOWN FIX === */
+        /* === NAVBAR MOBILE DROPDOWN FIX & RESPONSIVE IMPROVEMENT === */
         @media (max-width: 768px) {
 
             header {
                 display: flex;
                 justify-content: center;
-                background: rgba(255, 255, 255, 0.9);
-                backdrop-filter: blur(8px);
+                background: transparent;
+                /* tetap transparan */
+                backdrop-filter: none;
             }
 
             /* === NAVBAR FIX FINAL === */
@@ -840,7 +854,6 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                /* kiri dan kanan */
                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             }
 
@@ -874,13 +887,15 @@
                 flex-direction: column;
                 position: absolute;
                 top: 65px;
-                left: 22px;
+                left: 50%;
+                transform: translateX(-50%);
                 background: #fff;
-                width: 200px;
+                width: 220px;
                 border-radius: 12px;
                 box-shadow: 0 8px 25px rgba(0, 0, 0, .15);
                 overflow: hidden;
                 z-index: 100;
+                text-align: center;
             }
 
             .nav-center.active {
@@ -902,7 +917,6 @@
             /* Tombol CV kanan */
             .nav-right {
                 margin-left: auto;
-                /* dorong ke kanan */
             }
 
             .nav-right .resume-btn {
@@ -916,194 +930,242 @@
                 white-space: nowrap;
             }
 
-            /* === RESPONSIVE === */
-            @media (max-width: 768px) {
-                .navbar {
-                    justify-content: space-between;
-                    /* tetap kiri-kanan */
-                    padding: 10px 18px;
-                }
-
-                .nav-left {
-                    font-size: 14px;
-                    padding: 7px 14px;
-                }
-
-                .nav-right .resume-btn {
-                    font-size: 13px;
-                    padding: 7px 12px;
-                }
-
-                .nav-center {
-                    top: 55px;
-                    left: 20px;
-                }
-
-                /* === Hero Section === */
-                .hero {
-                    flex-direction: column;
-                    gap: 35px;
-                    padding: 100px 20px 60px;
-                    text-align: center;
-                }
-
-                .hero img {
-                    width: 180px;
-                    height: 180px;
-                    border-width: 4px;
-                }
-
-                .hero-text h1 {
-                    font-size: 1.8rem;
-                    line-height: 1.3;
-                }
-
-                .hero-text p {
-                    font-size: 14px;
-                    line-height: 1.6;
-                    max-width: 90%;
-                    margin: 0 auto;
-                }
-
-                .btn {
-                    padding: 10px 22px;
-                    font-size: 14px;
-                }
-
-                /* === Section Titles === */
-                h1 {
-                    font-size: 1.8rem !important;
-                    margin-bottom: 25px;
-                }
-
-                h2 {
-                    font-size: 1.2rem !important;
-                }
-
-                /* === About Section === */
-                #about>div {
-                    flex-direction: column;
-                    text-align: center;
-                    gap: 25px;
-                }
-
-                #about img {
-                    width: 200px !important;
-                    height: 200px !important;
-                }
-
-                #about p {
-                    font-size: 14px !important;
-                    line-height: 1.6;
-                    padding: 0 10px;
-                }
-
-                /* === Skill Section === */
-                #skill h1 {
-                    font-size: 1.7rem;
-                }
-
-                .skill-item img {
-                    width: 38px;
-                }
-
-                .skill-item p {
-                    font-size: 13px;
-                }
-
-                /* === Project Section === */
-                .projects h1 {
-                    font-size: 1.8rem;
-                    margin-bottom: 30px;
-                }
-
-                .image-box {
-                    height: 180px;
-                }
-
-                .overlay h2 {
-                    font-size: 16px;
-                }
-
-                .overlay a {
-                    font-size: 13px;
-                    padding: 6px 12px;
-                }
-
-                /* === Contact Section === */
-                .contact h1 {
-                    font-size: 1.8rem;
-                }
-
-                .contact-subtitle {
-                    font-size: 14px;
-                }
-
-                .contact-form {
-                    width: 100%;
-                    max-width: 330px;
-                    padding: 25px 20px;
-                }
-
-                .contact-form input,
-                .contact-form textarea {
-                    font-size: 13px;
-                    padding: 10px 12px;
-                }
-
-                .contact-form button {
-                    font-size: 14px;
-                    padding: 10px;
-                }
-
-                /* === Social Links === */
-                .social-title {
-                    font-size: 1.4rem;
-                }
-
-                .social-links a {
-                    font-size: 14px;
-                }
-
-                /* === Footer === */
-                footer p {
-                    font-size: 13px;
-                }
+            /* === GENERAL SPACING IMPROVEMENT === */
+            section {
+                padding: 60px 25px !important;
             }
 
-            @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem !important;
+                margin-bottom: 25px !important;
+            }
 
-                /* Ukuran lebih kecil lagi (HP kecil) */
-                .hero img {
-                    width: 150px;
-                    height: 150px;
-                }
+            h2 {
+                font-size: 1.2rem !important;
+            }
 
-                .hero-text h1 {
-                    font-size: 1.5rem;
-                }
+            /* === HERO === */
+            .hero {
+                flex-direction: column;
+                gap: 25px;
+                padding: 220px 20px 50px;
+                /* dari 140px → 200px */
+                text-align: center;
+            }
 
-                .btn {
-                    font-size: 13px;
-                    padding: 8px 18px;
-                }
+            .hero img {
+                width: 180px;
+                height: 180px;
+                border-width: 4px;
+            }
 
-                #about img {
-                    width: 170px !important;
-                    height: 170px !important;
-                }
+            .hero-text h1 {
+                font-size: 1.8rem;
+                line-height: 1.3;
+            }
 
-                .skill-item img {
-                    width: 32px;
-                }
+            .hero-text p {
+                font-size: 14px;
+                line-height: 1.6;
+                max-width: 90%;
+                margin: 0 auto;
+            }
 
-                .overlay h2 {
-                    font-size: 15px;
-                }
+            .btn {
+                padding: 10px 22px;
+                font-size: 14px;
+            }
 
-                .contact-form {
-                    padding: 20px 15px;
-                }
+            /* === ABOUT === */
+            /* === ABOUT === */
+            #about {
+                padding: 70px 20px !important;
+            }
+
+            #about>div {
+                flex-direction: column;
+                text-align: left;
+                /* ubah dari center */
+                gap: 20px;
+                padding: 0 25px;
+                /* tambah padding kiri-kanan biar sejajar */
+                max-width: 900px;
+                margin: 0 auto;
+            }
+
+            #about img {
+                width: 200px !important;
+                height: 200px !important;
+            }
+
+            #about h2 {
+                font-size: 20px !important;
+                margin-bottom: 8px !important;
+                text-align: left;
+            }
+
+            #about p {
+                font-size: 14px !important;
+                line-height: 1.6;
+                text-align: left;
+                margin: 0;
+            }
+
+
+            /* === SKILL & TOOLS === */
+            #skill {
+                padding: 70px 20px !important;
+            }
+
+            #skill h1 {
+                font-size: 1.7rem;
+                margin-bottom: 30px;
+            }
+
+            #skill>div:last-child {
+                grid-template-columns: repeat(2, 1fr) !important;
+                max-width: 400px !important;
+                gap: 20px !important;
+            }
+
+            .skill-item img {
+                width: 38px;
+            }
+
+            .skill-item p {
+                font-size: 13px;
+            }
+
+            /* === PROJECT === */
+            .projects {
+                padding: 60px 20px !important;
+            }
+
+            .projects h1 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            .image-box {
+                height: 180px;
+            }
+
+            .overlay h2 {
+                font-size: 16px;
+            }
+
+            .overlay a {
+                font-size: 13px;
+                padding: 6px 12px;
+            }
+
+            /* === CONTACT & SOCIAL SECTION === */
+            #contact {
+                padding: 70px 20px !important;
+            }
+
+            .contact h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-subtitle {
+                font-size: 14px;
+                margin-bottom: 35px;
+            }
+
+            .contact-wrapper {
+                gap: 25px !important;
+            }
+
+            .contact-form {
+                width: 100%;
+                max-width: 330px;
+                padding: 25px 20px;
+                margin: 0 auto;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+
+            .contact-form button {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            /* === SOCIAL MEDIA PADAT === */
+            .social-section {
+                margin-top: 10px !important;
+                text-align: center !important;
+                align-items: center !important;
+            }
+
+            .social-title {
+                font-size: 1.3rem !important;
+                margin-bottom: 15px !important;
+            }
+
+            .social-links {
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 14px !important;
+            }
+
+            .social-links a {
+                background: #fff;
+                padding: 10px 14px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                font-size: 13px;
+                color: #111;
+            }
+
+            .social-links a i {
+                font-size: 1.2rem;
+            }
+
+            /* === FOOTER === */
+            footer p {
+                font-size: 13px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            /* Ukuran lebih kecil lagi (HP kecil) */
+            .hero img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                font-size: 13px;
+                padding: 8px 18px;
+            }
+
+            #about img {
+                width: 170px !important;
+                height: 170px !important;
+            }
+
+            .skill-item img {
+                width: 32px;
+            }
+
+            .overlay h2 {
+                font-size: 15px;
+            }
+
+            .contact-form {
+                padding: 20px 15px;
             }
         }
     </style>
@@ -1120,11 +1182,11 @@
                 <a href="#skill">Skills</a>
                 <a href="#contact">Contact</a>
             </div>
-            <div class="nav-right">
-                <a href="pdf/CV_Muhammad_Mumtaz_Supian.pdf" download="CV_Muhammad_Mumtaz_Supian.pdf">
-                    <button class="resume-btn">Download CV</button>
-                </a>
-            </div>
+            <!-- <div class="nav-right">
+  <a href="pdf/CV_Muhammad_Mumtaz_Supian.pdf" download="CV_Muhammad_Mumtaz_Supian.pdf">
+    <button class="resume-btn">Download CV</button>
+  </a>
+</div> -->
         </nav>
     </header>
 
@@ -1154,7 +1216,7 @@
                 padding:6px 14px;
                 border-radius:20px;
                 font-size:14px;
-                color:#d86528;
+                color:#ff5b2e;
                 font-weight:600;
             ">Hey!</span>
 
@@ -1170,10 +1232,10 @@
                     style="font-weight:800;">works!</span> </h1>
             <p style="font-size:16px; color:#555; max-width:500px; margin:0 auto 30px;">Crafting smooth, responsive, and
                 user-friendly mobile experiences with style and reliability</p>
-            <a href="#contact"
-                style="display:inline-block; padding:12px 28px; background:#111; color:white; border-radius:12px; font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,0.2);">Contact
-                me</a>
-
+            <a href="pdf/CV_Muhammad_Mumtaz_Supian.pdf" download="CV_Muhammad_Mumtaz_Supian.pdf"
+                style="display:inline-block; padding:12px 28px; background:#111; color:white; border-radius:12px; font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,0.2);">
+                Download CV
+            </a>
         </div>
     </section>
 
