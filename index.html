@@ -948,8 +948,8 @@
             .hero {
                 flex-direction: column;
                 gap: 25px;
-                padding: 220px 20px 50px;
-                /* dari 140px → 200px */
+                padding: 130px 30px 60px !important;
+                /* tambahin + pakai !important biar pasti override */
                 text-align: center;
             }
 
@@ -976,7 +976,6 @@
                 font-size: 14px;
             }
 
-            /* === ABOUT === */
             /* === ABOUT === */
             #about {
                 padding: 70px 20px !important;
@@ -1022,10 +1021,22 @@
                 margin-bottom: 30px;
             }
 
+            /* === Grid skill utama (My Skill) jadi 3 kolom di HP === */
+            #skill>div:first-of-type {
+                grid-template-columns: repeat(3, 1fr) !important;
+                max-width: 450px !important;
+                gap: 18px !important;
+                margin: 0 auto;
+            }
+
+
             #skill>div:last-child {
-                grid-template-columns: repeat(2, 1fr) !important;
-                max-width: 400px !important;
-                gap: 20px !important;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                max-width: 420px;
+                margin: 0 auto;
+                gap: 12px !important;
+                row-gap: 16px !important;
             }
 
             .skill-item img {
@@ -1131,8 +1142,13 @@
             footer p {
                 font-size: 13px;
             }
-        }
 
+            footer {
+                margin-top: 5px !important;
+                padding-top: 6px !important;
+                padding-bottom: 8px !important;
+            }
+        }
 
         @media (max-width: 480px) {
 
@@ -1232,10 +1248,6 @@
                     style="font-weight:800;">works!</span> </h1>
             <p style="font-size:16px; color:#555; max-width:500px; margin:0 auto 30px;">Crafting smooth, responsive, and
                 user-friendly mobile experiences with style and reliability</p>
-            <a href="pdf/CV_Muhammad_Mumtaz_Supian.pdf" download="CV_Muhammad_Mumtaz_Supian.pdf"
-                style="display:inline-block; padding:12px 28px; background:#111; color:white; border-radius:12px; font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,0.2);">
-                Download CV
-            </a>
         </div>
     </section>
 
@@ -1261,9 +1273,10 @@
                     experiences.
                     I'm also learning <b>Flutter (Dart)</b> to develop cross-platform mobile apps.
                 </p>
-                <a href="#contact"
-                    style="display:inline-block; padding:12px 28px; background:#111; color:white; border-radius:12px; font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,0.2);">Contact
-                    me ></a>
+                <a href="pdf/CV_Muhammad_Mumtaz_Supian.pdf" download="CV_Muhammad_Mumtaz_Supian.pdf"
+                    style="display:inline-block; padding:12px 28px; background:#111; color:white; border-radius:12px; font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,0.2);">
+                    Download CV
+                </a>
             </div>
         </div>
     </section>
